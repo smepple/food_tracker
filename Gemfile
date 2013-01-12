@@ -30,7 +30,7 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
   gem 'miniskirt'
   gem 'simplecov', :require => false
 end
