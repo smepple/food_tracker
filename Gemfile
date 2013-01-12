@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'jquery-rails'
+gem 'bcrypt-ruby'
 gem 'haml'
 gem 'haml-rails'
-gem 'rspec-rails'
 gem 'thin'
 gem 'numbers_and_words'
 

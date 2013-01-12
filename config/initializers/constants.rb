@@ -1,1 +1,8 @@
 APP_NAME = 'FoodTracker'
+
+MIN_USERNAME_LENGTH = 2
+MAX_USERNAME_LENGTH = 16
+MIN_PASSWORD_LENGTH = 6
+MAX_PASSWORD_LENGTH = 32
+
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
