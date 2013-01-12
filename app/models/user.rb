@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase }
 
-  validates_presence_of :username, :email, :password
+  validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
   validates_format_of :email, with: VALID_EMAIL_REGEX
   validates_length_of :username, in: MIN_USERNAME_LENGTH..MAX_USERNAME_LENGTH

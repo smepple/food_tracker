@@ -32,6 +32,11 @@ describe "Signup" do
       describe "after unsuccessful signup attempt" do
         before { click_button 'Create account' }
 
+        it "should leave the user on the signup screen" do
+          page.should have_page_title 'Sign up'
+          page.should have_content 'Sign up'
+        end
+
         it "should display errors" do
           page.should have_error_message "can't be blank"
           page.should have_error_message "too short"
@@ -54,6 +59,10 @@ describe "Signup" do
       describe "after successful signup" do
 
         before { click_button 'Create account' }
+
+        it "should display a success message" do
+          page.should have_success_message 'Thanks for signing up!'
+        end
 
         it "should redirect to the user profile page" do 
           page.should have_page_title user.username
