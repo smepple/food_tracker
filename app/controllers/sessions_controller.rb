@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_filter :non_signed_in_user, only: [:new, :create]
   
   def new
   end
@@ -21,4 +22,10 @@ class SessionsController < ApplicationController
     flash[:success] = "Come back soon!"
     redirect_to root_url
   end
+
+  private
+
+    def non_signed_in_user
+      redirect_to current_user, notice: "You're already signed in" if signed_in?
+    end
 end

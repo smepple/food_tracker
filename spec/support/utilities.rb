@@ -1,5 +1,13 @@
 include ApplicationHelper
 
+def valid_signin(user)
+  visit root_path
+  click_link "Sign in"
+  fill_in "Username", with: user.username
+  fill_in "Password", with: user.password
+  click_button "Sign in"
+end
+
 RSpec::Matchers.define :have_signup_link do
   match do |page|
     page.should have_link 'Create an account'
@@ -50,6 +58,6 @@ end
 
 RSpec::Matchers.define :have_warning_message do |message|
   match do |page|
-    page.should have_selector 'div.alert.alert-warning', text: message
+    page.should have_selector 'div.alert.alert-notice', text: message
   end
 end
