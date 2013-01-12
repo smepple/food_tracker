@@ -12,6 +12,18 @@ RSpec::Matchers.define :have_signin_link do
   end
 end
 
+RSpec::Matchers.define :have_signout_link do
+  match do |page|
+    page.should have_link 'Sign out'
+  end
+end
+
+RSpec::Matchers.define :have_signed_in_message do |username|
+  match do |page|
+    page.should have_content "Signed in as #{username}"
+  end
+end
+
 RSpec::Matchers.define :have_input_field do |label|
   match do |page|
     page.should have_selector 'input', label: label
@@ -33,5 +45,11 @@ end
 RSpec::Matchers.define :have_success_message do |message|
   match do |page|
     page.should have_selector 'div.alert.alert-success', text: message
+  end
+end
+
+RSpec::Matchers.define :have_warning_message do |message|
+  match do |page|
+    page.should have_selector 'div.alert.alert-warning', text: message
   end
 end

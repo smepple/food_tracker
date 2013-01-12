@@ -17,10 +17,17 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
   validates_format_of :email, with: VALID_EMAIL_REGEX
   validates_length_of :username, in: MIN_USERNAME_LENGTH..MAX_USERNAME_LENGTH
   validates_length_of :password, in: MIN_PASSWORD_LENGTH..MAX_PASSWORD_LENGTH
+
+  private
+  
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end

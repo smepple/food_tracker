@@ -7,6 +7,7 @@ describe "StaticPages" do
 
     subject { page }
 
+    it { should have_page_title '' }
     it { should have_content APP_NAME }
     it { should have_signup_link }
     it { should have_signin_link }

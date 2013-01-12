@@ -3,7 +3,10 @@ FoodTracker::Application.routes.draw do
   root to: "static_pages#home"
 
   match 'signup', to: 'users#new'
+  match 'signin',  to: 'sessions#new'
+  match 'signout', to: 'sessions#destroy', via: :delete
 
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users
 
   # The priority is based upon order of creation:

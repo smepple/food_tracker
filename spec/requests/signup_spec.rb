@@ -60,6 +60,12 @@ describe "Signup" do
 
         before { click_button 'Create account' }
 
+        it "should sign the user in" do
+          page.should have_signed_in_message user.username
+          page.should have_signout_link
+          page.should_not have_signin_link
+        end
+
         it "should display a success message" do
           page.should have_success_message 'Thanks for signing up!'
         end
