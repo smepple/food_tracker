@@ -6,3 +6,9 @@ MIN_PASSWORD_LENGTH = 6
 MAX_PASSWORD_LENGTH = 32
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+VALID_URL_REGEX = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+
+MAX_DISH_NAME_LENGTH = 250
+MAX_DISH_DESCRIPTION_LENGTH = 1000
+MIN_DISH_PREP_TIME = 5
+MIN_DISH_SOURCE_PAGE = 1

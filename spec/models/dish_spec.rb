@@ -63,4 +63,34 @@ describe Dish do
     before { dish.source_id = nil }
     it { should_not be_valid }
   end
+
+  describe "when name is too long" do
+    before { dish.name = 'a' * (MAX_DISH_NAME_LENGTH + 1) }
+    it { should_not be_valid }
+  end
+
+  describe "when description is too long" do
+    before { dish.description = 'a' * (MAX_DISH_DESCRIPTION_LENGTH + 1) }
+    it { should_not be_valid }
+  end
+
+  describe "when prep_time is not a number" do
+    before { dish.prep_time = 'a' }
+    it { should_not be_valid }
+  end
+
+  describe "when source_page is not a number" do
+    before { dish.source_page = 'a' }
+    it { should_not be_valid }
+  end
+
+  describe "when prep_time is too short" do
+    before { dish.prep_time = (MIN_DISH_PREP_TIME - 1) }
+    it { should_not be_valid }
+  end
+
+  describe "when source_page is too short" do
+    before { dish.source_page = (MIN_DISH_SOURCE_PAGE - 1) }
+    it { should_not be_valid }
+  end
 end

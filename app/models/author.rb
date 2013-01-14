@@ -12,7 +12,7 @@
 class Author < ActiveRecord::Base
   attr_accessible :firstname, :lastname
 
-  has_many :sources
+  has_many :sources, dependent: :destroy
 
   validates_presence_of :firstname, :lastname
 end

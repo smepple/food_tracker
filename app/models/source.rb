@@ -17,4 +17,5 @@ class Source < ActiveRecord::Base
   has_many :dishes
 
   validates_presence_of :name, :author_id
+  validates_format_of :url, with: VALID_URL_REGEX
 end

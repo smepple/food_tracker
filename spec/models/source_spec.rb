@@ -34,4 +34,28 @@ describe Source do
     before { source.name = nil }
     it { should_not be_valid }
   end
+
+  describe "when url format is invalid" do
+    it "should be invalid" do
+      urls = %w[subdomain.subdomain.domain.com 
+                sub.domain 
+                https://sub.domain]
+      urls.each do |invalid_url|
+        source.url = invalid_url
+        source.should_not be_valid
+      end      
+    end
+  end
+
+  describe "when url format is valid" do
+    it "should be valid" do
+      urls = %w[http://www.test.com http://subdomain.test.com
+                https://subdomain.test.com/url/parameters 
+                http://www.test.com/query?parameters=query]
+      urls.each do |valid_url|
+        source.url = valid_url
+        source.should be_valid
+      end      
+    end
+  end
 end
