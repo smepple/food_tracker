@@ -21,6 +21,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'awesome_print'
+  gem 'meta_request'
 end
 
 group :assets do
