@@ -1,5 +1,5 @@
 FoodTracker::Application.routes.draw do
-  
+
   root to: "static_pages#home"
 
   match 'signup', to: 'users#new'
@@ -8,6 +8,7 @@ FoodTracker::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :dishes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

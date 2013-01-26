@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:show]
   before_filter :correct_user, only: [:show]
-  before_filter :non_signed_in_user, only: [:new]
+  before_filter :non_signed_in_user, only: [:new, :create]
 
   def new
-      @user = User.new
+    @user = User.new
   end
 
   def create
@@ -20,12 +20,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @dishes = @user.dishes
   end
 
   private
 
     def signed_in_user
-      redirect_to signin_path, notice: "Please sign in" unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in"
+      end
     end
 
     def non_signed_in_user

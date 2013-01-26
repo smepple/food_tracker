@@ -126,26 +126,6 @@ describe "Authorization" do
         page.should have_input_field 'Password'
         page.should have_button 'Sign in'
       end
-
-      describe "when attempting to visit a protected page" do
-        before do
-          # visit user_path(user)
-          fill_in 'Username', with: user.username
-          fill_in 'Password', with: user.password
-          click_button 'Sign in'
-        end
-
-        describe "after signing in" do
-
-          it "should render the desired protected page" do
-            page.should have_page_title user.username
-            page.should have_content user.username
-            page.should have_signed_in_message user.username
-            page.should have_signout_link
-            page.should_not have_signin_link
-          end
-        end
-      end
     end
 
     describe "as a signed in user" do
@@ -183,6 +163,85 @@ describe "Authorization" do
           page.should have_signed_in_message user.username
           page.should have_signout_link
           page.should_not have_signin_link
+        end
+      end
+    end
+  end
+
+  describe "new dish page" do
+
+    describe "as a non-signed in user" do
+
+      before { visit new_dish_path }
+
+      it "should redirect to the signin page" do
+        page.should have_page_title 'Sign in'
+        page.should have_content 'Sign in'
+        page.should have_input_field 'Username'
+        page.should have_input_field 'Password'
+        page.should have_button 'Sign in'
+      end
+
+      describe "when attempting to visit a protected page" do
+
+        before do
+          fill_in 'Username', with: user.username
+          fill_in 'Password', with: user.password
+          click_button 'Sign in'
+        end
+
+        describe "after signing in" do
+
+          it "should render the desired protected page" do
+            page.should have_page_title "New dish"
+            page.should have_input_field "Name"
+            page.should have_input_field "Description"
+            page.should have_input_field "Eat date"
+            page.should have_input_field "Prep time"
+            page.should have_input_field "Category"
+            page.should have_input_field "Source"
+            page.should have_input_field "Source page"
+          end
+        end
+      end
+    end
+  end
+
+  describe "show dish page" do
+
+    describe "as a non-signed in user" do
+
+      let(:dish) { Factory :dish }
+
+      before { visit dish_path(dish) }
+
+      it "should redirect to the signin page" do
+        page.should have_page_title 'Sign in'
+        page.should have_content 'Sign in'
+        page.should have_input_field 'Username'
+        page.should have_input_field 'Password'
+        page.should have_button 'Sign in'
+      end
+
+      describe "when attempting to visit a protected page" do
+
+        before do
+          fill_in 'Username', with: user.username
+          fill_in 'Password', with: user.password
+          click_button 'Sign in'
+        end
+
+        describe "after signing in" do
+
+          it "should render the desired protected page" do
+            page.should have_content dish.name
+            page.should have_content dish.description
+            page.should have_content dish.eat_date
+            page.should have_content dish.prep_time
+            page.should have_content dish.category_id
+            page.should have_content dish.source_id
+            page.should have_content dish.source_page
+          end
         end
       end
     end
