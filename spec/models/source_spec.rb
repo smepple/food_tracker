@@ -25,13 +25,18 @@ describe Source do
   it { should respond_to :url }
   it { should respond_to :dishes }
 
-  describe "when author_id is not present" do
-    before { source.author_id = nil }
+  describe "when name is not present" do
+    before { source.name = nil }
     it { should_not be_valid }
   end
 
-  describe "when name is not present" do
-    before { source.name = nil }
+  describe "when name is too short" do
+    before { source.name = 'a' * (MIN_SOURCE_NAME_LENGTH - 1) }
+    it { should_not be_valid }
+  end
+
+  describe "when name is too long" do
+    before { source.name = 'a' * (MAX_SOURCE_NAME_LENGTH + 1) }
     it { should_not be_valid }
   end
 

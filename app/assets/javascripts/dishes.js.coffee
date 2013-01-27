@@ -5,3 +5,8 @@
 jQuery ->
   $('#dish_category_name').autocomplete
     source: $('#dish_category_name').data('autocomplete-source')
+
+  $('#dish_source_name').autocomplete
+    source: $('#dish_source_name').data('autocomplete-source')
+
+  $('.ui-helper-hidden-accessible').hide()

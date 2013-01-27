@@ -18,7 +18,7 @@
 class Dish < ActiveRecord::Base
   attr_accessible :category_id, :description, :eat_date, :name, 
                   :prep_time, :source_id, :source_page, :user_id,
-                  :category_name
+                  :category_name, :source_name
 
   belongs_to :user
   belongs_to :category
@@ -31,7 +31,8 @@ class Dish < ActiveRecord::Base
   validates_length_of :description, maximum: MAX_DISH_DESCRIPTION_LENGTH
 
   validates_numericality_of :prep_time, greater_than_or_equal_to: MIN_DISH_PREP_TIME
-  validates_numericality_of :source_page, greater_than_or_equal_to: MIN_DISH_SOURCE_PAGE
+  validates_numericality_of :source_page, greater_than_or_equal_to: MIN_DISH_SOURCE_PAGE,
+                            allow_nil: true
 
   def category_name
     category.try(:name)
@@ -39,5 +40,13 @@ class Dish < ActiveRecord::Base
 
   def category_name=(name)
     self.category = Category.find_or_create_by_name(name) if name.present?
+  end
+
+  def source_name
+    source.try(:name)
+  end
+
+  def source_name=(name)
+    self.source = Source.find_or_create_by_name(name) if name.present?
   end
 end

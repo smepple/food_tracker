@@ -33,6 +33,8 @@ describe Dish do
   it { should respond_to :category_id }
   it { should respond_to :source_id }
   it { should respond_to :source_page }
+  it { should respond_to :category_name }
+  it { should respond_to :source_name }
 
   describe "when user_id is not present" do
     before { dish.user_id = nil }

@@ -23,10 +23,6 @@
                           include_blank: true
   = f.label :category_name
   = f.text_field :category_name, data: { autocomplete_source: categories_path }
-  = f.label :source_id
-  = f.select :source_id, [['The Baker Creek Vegan Cookbook', 1], 
-                          ['Appetite for Reduction', 2]],
-                          include_blank: true
-  = f.label :source_page
-  = f.text_field :source_page
+  = f.label :source_name
+  = f.text_field :source_name, data: { autocomplete_source: sources_path }
   = f.submit "Add dish"

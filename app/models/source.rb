@@ -16,6 +16,7 @@ class Source < ActiveRecord::Base
   belongs_to :author
   has_many :dishes
 
-  validates_presence_of :name, :author_id
-  validates_format_of :url, with: VALID_URL_REGEX
+  validates_presence_of :name
+  validates_length_of :name, in: MIN_SOURCE_NAME_LENGTH..MAX_SOURCE_NAME_LENGTH
+  validates_format_of :url, with: VALID_URL_REGEX, allow_nil: true
 end

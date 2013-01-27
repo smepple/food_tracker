@@ -10,6 +10,7 @@ FoodTracker::Application.routes.draw do
   resources :users
   resources :dishes
   resources :categories
+  resources :sources
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

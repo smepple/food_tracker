@@ -62,8 +62,7 @@ describe "Dishes" do
           select Time.now.day.to_s, from: 'dish_eat_date_3i'
           select '30 min', from: 'Prep time'
           fill_in "Category", with: "Entree"
-          select 'The Baker Creek Vegan Cookbook', from: 'Source'
-          fill_in "Source page", with: 10
+          fill_in "Source", with: "The Baker Creek Vegan Cookbook"
         end
 
         it "should create a dish" do
