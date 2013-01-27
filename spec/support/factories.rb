@@ -6,7 +6,7 @@ end
 
 Factory.define :dish do |f|
   f.user { Factory :user }
-  f.name 'test dish'
+  f.name 'test dish%d'
   f.description 'Aenean lacinia bibendum nulla sed consectetur.'
   f.eat_date Time.now.to_date
   f.prep_time 30
@@ -16,12 +16,12 @@ Factory.define :dish do |f|
 end
 
 Factory.define :category do |f|
-  f.name 'test category'
+  f.name 'test category%d'
 end
 
 Factory.define :source do |f|
   f.author { Factory :author }
-  f.name 'test source'
+  f.name 'test source%d'
   f.url 'http://www.someawesomecookbook.com/'
 end
 

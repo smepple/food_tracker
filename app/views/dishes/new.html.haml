@@ -19,15 +19,14 @@
                           ['1 hour 30 min', 90],
                           ['2 hours', 120],
                           ['2 hours 30 min', 150],
-                          ['3 hours', 180]]
-  = f.label :category_id
-  = f.select :category_id, [['Entree', 1], 
-                            ['Appetizer', 2], 
-                            ['Salad', 3], 
-                            ['Soup', 4]]
+                          ['3 hours', 180]],
+                          include_blank: true
+  = f.label :category_name
+  = f.text_field :category_name, data: { autocomplete_source: categories_path }
   = f.label :source_id
   = f.select :source_id, [['The Baker Creek Vegan Cookbook', 1], 
-                          ['Appetite for Reduction', 2]]
+                          ['Appetite for Reduction', 2]],
+                          include_blank: true
   = f.label :source_page
   = f.text_field :source_page
   = f.submit "Add dish"

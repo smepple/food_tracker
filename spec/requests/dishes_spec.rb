@@ -52,7 +52,7 @@ describe "Dishes" do
 
       describe "with valid information" do
 
-        let(:dish) { Factory.build :dish, user_id: user.id }
+        let(:dish) { Factory.build :dish }
 
         before do
           fill_in "Name", with: dish.name
@@ -61,7 +61,7 @@ describe "Dishes" do
           select I18n.t("date.month_names")[Time.now.month], from: 'dish_eat_date_2i'
           select Time.now.day.to_s, from: 'dish_eat_date_3i'
           select '30 min', from: 'Prep time'
-          select 'Entree', from: 'Category'
+          fill_in "Category", with: "Entree"
           select 'The Baker Creek Vegan Cookbook', from: 'Source'
           fill_in "Source page", with: 10
         end
