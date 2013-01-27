@@ -20,6 +20,8 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @category = Category.find(@dish.category_id)
+    @source = Source.find(@dish.source_id)
   end
 
   private

@@ -1,4 +1,20 @@
-Signed in as
-= current_user.username
+%header#header
 
-= link_to "Sign out", signout_path, method: "delete"
+  .container.row
+
+    .sixth
+
+      =link_to APP_NAME, root_path
+
+    .sixth.push-right
+
+      - if signed_in?
+
+        Signed in as
+        = current_user.username
+
+        = link_to "Sign out", signout_path, method: "delete"
+
+      - else
+
+        = link_to "Sign in", signin_path

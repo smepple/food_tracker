@@ -1,28 +1,38 @@
 = provide :title, "New dish"
 
 %h1 New dish
+%hr
 
-= form_for @dish do |f|
+= form_for @dish, html: { class: "forms" } do |f|
   = render 'shared/error_messages', object: f.object
-  = f.label :name
-  = f.text_field :name
-  = f.label :description
-  = f.text_area :description
-  = f.label :eat_date
-  = f.date_select :eat_date
-  = f.label :prep_time
-  = f.select :prep_time, [['15 min', 15],
-                          ['20 min', 20], 
-                          ['30 min', 30],
-                          ['45 min', 45], 
-                          ['1 hour', 60],
-                          ['1 hour 30 min', 90],
-                          ['2 hours', 120],
-                          ['2 hours 30 min', 150],
-                          ['3 hours', 180]],
-                          include_blank: true
-  = f.label :category_name
-  = f.text_field :category_name, data: { autocomplete_source: categories_path }
-  = f.label :source_name
-  = f.text_field :source_name, data: { autocomplete_source: sources_path }
-  = f.submit "Add dish"
+  %fieldset.liner
+    %ul
+      %li
+        = f.label :name, class: "bold"
+        = f.text_field :name
+      %li
+        = f.label :description, class: "bold"
+        = f.text_area :description
+      %li
+        = f.label :eat_date, class: "bold"
+        = f.date_select :eat_date
+      %li
+        = f.label :prep_time, class: "bold"
+        = f.select :prep_time, [['15 min', 15],
+                                ['20 min', 20], 
+                                ['30 min', 30],
+                                ['45 min', 45], 
+                                ['1 hour', 60],
+                                ['1 hour 30 min', 90],
+                                ['2 hours', 120],
+                                ['2 hours 30 min', 150],
+                                ['3 hours', 180]],
+                                include_blank: true
+        %li
+          = f.label :category_name, class: "bold"
+          = f.text_field :category_name, data: { autocomplete_source: categories_path }
+        %li
+          = f.label :source_name, class: "bold"
+          = f.text_field :source_name, data: { autocomplete_source: sources_path }
+        %li
+          = f.submit "Add dish", class: "btn btn-big"

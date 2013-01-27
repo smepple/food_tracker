@@ -1,13 +1,20 @@
 = provide :title, "Sign up"
 
 %h1 Sign up
+%hr
 
-= form_for @user do |f|
+= form_for @user, html: { class: "forms" } do |f|
   = render 'shared/error_messages', object: f.object
-  = f.label :username
-  = f.text_field :username
-  = f.label :email
-  = f.email_field :email
-  = f.label :password
-  = f.password_field :password
-  = f.submit 'Create account'
+  %fieldset.liner
+    %ul
+      %li
+        = f.label :username, class: "bold"
+        = f.text_field :username
+      %li
+        = f.label :email, class: "bold"
+        = f.email_field :email
+      %li
+        = f.label :password, class: "bold"
+        = f.password_field :password
+      %li
+        = f.submit 'Create account', class: "btn btn-big"
