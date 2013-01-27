@@ -1,12 +1,14 @@
 %h1= @dish.name
 .category
-  %em= @category.name
+  %cite= @category.name
 .prep-time
   %cite= "#{@dish.prep_time} minutes"
 .source
-  %em= @source.name
+  %cite= "From #{@source.name}"
 .eat_date
-  %em= "Eaten on #{@dish.eat_date}"
+  %cite Eaten
+  %cite.timeago{title: @dish.eat_date}
+
 %hr
 
 %blockquote= @dish.description

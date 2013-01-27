@@ -24,6 +24,8 @@ class Dish < ActiveRecord::Base
   belongs_to :category
   belongs_to :source
 
+  default_scope order "eat_date DESC"
+
   validates_presence_of :user_id, :name, :eat_date, :prep_time,
                         :category_id, :source_id
 
@@ -33,6 +35,8 @@ class Dish < ActiveRecord::Base
   validates_numericality_of :prep_time, greater_than_or_equal_to: MIN_DISH_PREP_TIME
   validates_numericality_of :source_page, greater_than_or_equal_to: MIN_DISH_SOURCE_PAGE,
                             allow_nil: true
+
+  validates :eat_date, date: { before: Date.tomorrow, message: "can't be in the future" }
 
   def category_name
     category.try(:name)

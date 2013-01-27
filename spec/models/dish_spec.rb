@@ -95,4 +95,9 @@ describe Dish do
     before { dish.source_page = (MIN_DISH_SOURCE_PAGE - 1) }
     it { should_not be_valid }
   end
+
+  describe "when eat_date is in the future" do
+    before { dish.eat_date = Date.tomorrow }
+    it { should_not be_valid }
+  end
 end

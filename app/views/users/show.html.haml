@@ -14,4 +14,4 @@
     - @dishes.each do |d|
       .dish
         %strong= link_to d.name, dish_path(d)
-        %cite= d.eat_date
+        %cite.timeago{title: d.eat_date}

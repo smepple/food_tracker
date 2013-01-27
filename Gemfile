@@ -7,6 +7,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'thin'
 gem 'numbers_and_words'
+gem 'date_validator'
 
 group :development, :test do
   gem 'sqlite3'

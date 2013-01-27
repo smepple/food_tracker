@@ -57,9 +57,7 @@ describe "Dishes" do
         before do
           fill_in "Name", with: dish.name
           fill_in "Description", with: dish.description
-          select Time.now.year.to_s, from: 'dish_eat_date_1i'
-          select I18n.t("date.month_names")[Time.now.month], from: 'dish_eat_date_2i'
-          select Time.now.day.to_s, from: 'dish_eat_date_3i'
+          select 'Yesterday', from: 'Eat date'
           select '30 min', from: 'Prep time'
           fill_in "Category", with: "Entree"
           fill_in "Source", with: "The Baker Creek Vegan Cookbook"
@@ -79,7 +77,6 @@ describe "Dishes" do
 
           it "should list the dish on the user profile page" do
             page.should have_content dish.name
-            page.should have_content dish.eat_date
           end
         end
       end
@@ -98,7 +95,6 @@ describe "Dishes" do
 
     it { should have_content dish.name }
     it { should have_content dish.description }
-    it { should have_content dish.eat_date }
     it { should have_content dish.prep_time }
     it { should have_content dish.category_id }
     it { should have_content dish.source_id }

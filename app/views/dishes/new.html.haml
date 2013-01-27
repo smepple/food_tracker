@@ -15,7 +15,15 @@
         = f.text_area :description
       %li
         = f.label :eat_date, class: "bold"
-        = f.date_select :eat_date
+        = f.select :eat_date, [['Today', Date.today],
+                               ['Yesterday', Date.yesterday],
+                               ['2 days ago', 2.days.ago],
+                               ['3 days ago', 3.days.ago],
+                               ['4 days ago', 4.days.ago],
+                               ['5 days ago', 5.days.ago],
+                               ['6 days ago', 6.days.ago],
+                               ['1 week ago', 1.week.ago]],
+                               prompt: "When did you eat this dish?"
       %li
         = f.label :prep_time, class: "bold"
         = f.select :prep_time, [['15 min', 15],
@@ -27,12 +35,12 @@
                                 ['2 hours', 120],
                                 ['2 hours 30 min', 150],
                                 ['3 hours', 180]],
-                                include_blank: true
+                                prompt: "How long did it take to make?"
         %li
-          = f.label :category_name, class: "bold"
+          = f.label :category_name, "Category", class: "bold"
           = f.text_field :category_name, data: { autocomplete_source: categories_path }
         %li
-          = f.label :source_name, class: "bold"
+          = f.label :source_name, "Source", class: "bold"
           = f.text_field :source_name, data: { autocomplete_source: sources_path }
         %li
           = f.submit "Add dish", class: "btn btn-big"

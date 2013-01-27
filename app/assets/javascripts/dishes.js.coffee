@@ -10,3 +10,5 @@ jQuery ->
     source: $('#dish_source_name').data('autocomplete-source')
 
   $('.ui-helper-hidden-accessible').hide()
+
+  $('.timeago').timeago()

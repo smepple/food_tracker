@@ -236,7 +236,6 @@ describe "Authorization" do
           it "should render the desired protected page" do
             page.should have_content dish.name
             page.should have_content dish.description
-            page.should have_content dish.eat_date
             page.should have_content dish.prep_time
             page.should have_content dish.category_id
             page.should have_content dish.source_id
