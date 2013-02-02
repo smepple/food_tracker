@@ -15,14 +15,14 @@
         = f.text_area :description
       %li
         = f.label :eat_date, class: "bold"
-        = f.select :eat_date, [['Today', Date.today],
-                               ['Yesterday', Date.yesterday],
-                               ['2 days ago', 2.days.ago],
-                               ['3 days ago', 3.days.ago],
-                               ['4 days ago', 4.days.ago],
-                               ['5 days ago', 5.days.ago],
-                               ['6 days ago', 6.days.ago],
-                               ['1 week ago', 1.week.ago]],
+        = f.select :eat_date, [['Today', Time.now.in_time_zone(Time.zone)],
+                               ['Yesterday', 1.day.ago.in_time_zone(Time.zone)],
+                               ['2 days ago', 2.days.ago.in_time_zone(Time.zone)],
+                               ['3 days ago', 3.days.ago.in_time_zone(Time.zone)],
+                               ['4 days ago', 4.days.ago.in_time_zone(Time.zone)],
+                               ['5 days ago', 5.days.ago.in_time_zone(Time.zone)],
+                               ['6 days ago', 6.days.ago.in_time_zone(Time.zone)],
+                               ['1 week ago', 1.week.ago.in_time_zone(Time.zone)]],
                                prompt: "When did you eat this dish?"
       %li
         = f.label :prep_time, class: "bold"

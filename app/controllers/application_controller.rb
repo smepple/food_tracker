@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  include SessionsHelper
+  before_filter :set_timezone
+
+  include SessionsHelper 
+
+  private
+
+    def set_timezone
+      Time.zone = cookies["time_zone"]
+    end
 end
