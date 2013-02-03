@@ -1,0 +1,131 @@
+/* 
+  Adapted from:
+  Kube Professional CSS-framework
+  Copyright (c) 2012, Imperavi Inc.
+  http://imperavi.com/kube/
+  License: free
+*/
+
+/* Goodies */
+/*--------------------------------------------------------------------------*/
+
+.image-left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+.image-right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+.image-left img,
+.image-right img {
+  position: relative;
+  top: .4em;
+}
+p.lead {
+  font-size: 1.2em;
+}
+.supersmall {
+  font-size: 0.7em;
+}
+.small {
+  font-size: 0.85em;
+}
+.big {
+  font-size: 1.2em;
+}
+input.big {
+  padding: 2px 0;
+  font-size: 1.2em;
+}
+.text-centered {
+  text-align: center;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.clear {
+  clear: both;
+}
+.last {
+  margin-right: 0 !important;
+}
+.end {
+  margin-bottom: 0 !important;
+}
+.handle {
+  cursor: move;
+}
+.normal {
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.req,
+.required {
+  font-weight: normal;
+  color: #da3e5a;
+}
+.highlight {
+  background-color: #e5ecf5 !important;
+}
+/* Width */
+.width-33 {
+  width: 33%;
+}
+.width-50 {
+  width: 50%;
+}
+.width-100 {
+  width: 100%;
+}
+input.width-100 {
+  width: 98.6%;
+}
+textarea.width-100 {
+  width: 99.4%;
+}
+select.width-100 {
+  width: 99.4%;
+}
+/* Colors */
+.black {
+  color: #000000;
+}
+.gray-dark {
+  color: #555555;
+}
+.gray {
+  color: #777777;
+}
+.gray-light {
+  color: #999999;
+}
+.white {
+  color: #ffffff;
+}
+.red,
+.error {
+  color: #da3e5a;
+}
+.green,
+.success {
+  color: #18a011;
+}
+/* Link Colors Hover */
+a.white:hover {
+  color: #d9d9d9;
+  color: rgba(255, 255, 255, 0.8);
+}
+a.green:hover,
+a.red:hover,
+a.error:hover {
+  color: #000000;
+}

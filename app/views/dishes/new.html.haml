@@ -3,18 +3,18 @@
 %h1 New dish
 %hr
 
-= form_for @dish, html: { class: "forms" } do |f|
+= form_for @dish do |f|
   = render 'shared/error_messages', object: f.object
-  %fieldset.liner
+  %fieldset
     %ul
       %li
-        = f.label :name, class: "bold"
+        = f.label :name
         = f.text_field :name
       %li
-        = f.label :description, class: "bold"
+        = f.label :description
         = f.text_area :description
       %li
-        = f.label :eat_date, class: "bold"
+        = f.label :eat_date
         = f.select :eat_date, [['Today', Time.now.in_time_zone(Time.zone)],
                                ['Yesterday', 1.day.ago.in_time_zone(Time.zone)],
                                ['2 days ago', 2.days.ago.in_time_zone(Time.zone)],
@@ -25,7 +25,7 @@
                                ['1 week ago', 1.week.ago.in_time_zone(Time.zone)]],
                                prompt: "When did you eat this dish?"
       %li
-        = f.label :prep_time, class: "bold"
+        = f.label :prep_time
         = f.select :prep_time, [['15 min', 15],
                                 ['20 min', 20], 
                                 ['30 min', 30],
@@ -37,10 +37,10 @@
                                 ['3 hours', 180]],
                                 prompt: "How long did it take to make?"
         %li
-          = f.label :category_name, "Category", class: "bold"
+          = f.label :category_name, "Category"
           = f.text_field :category_name, data: { autocomplete_source: categories_path }
         %li
-          = f.label :source_name, "Source", class: "bold"
+          = f.label :source_name, "Source"
           = f.text_field :source_name, data: { autocomplete_source: sources_path }
         %li
-          = f.submit "Add dish", class: "btn btn-big"
+          = f.submit "Add dish", class: "btn"

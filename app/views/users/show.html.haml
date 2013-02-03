@@ -1,17 +1,15 @@
 = provide :title, "#{@user.username}"
 
-.row
+.one-third
 
-  .third
+  %h1= @user.username
 
-    %h1= @user.username
+  = link_to "Add a dish", new_dish_path, class: "btn"
 
-    = link_to "Add a dish", new_dish_path, class: "btn btn-big"
+.two-third
 
-  .twothird
-
-    %h2 Recent dishes
-    - @dishes.each do |d|
-      .dish
-        %strong= link_to d.name, dish_path(d)
-        %cite.timeago{title: d.eat_date}
+  %h2 Recent dishes
+  - @dishes.each do |d|
+    .dish
+      %strong= link_to d.name, dish_path(d)
+      %cite.timeago{title: d.eat_date}

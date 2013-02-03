@@ -9,10 +9,9 @@
 
     = render 'shared/header'
 
-    .row
-      .twothird.centered
+    .container
 
-        - flash.each do |key, value|
-          = content_tag(:div, value, class: "alert alert-#{key}")
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: "alert alert-#{key}")
 
-        = yield
+      = yield

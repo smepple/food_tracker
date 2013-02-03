@@ -3,18 +3,18 @@
 %h1 Sign up
 %hr
 
-= form_for @user, html: { class: "forms" } do |f|
+= form_for @user do |f|
   = render 'shared/error_messages', object: f.object
   %fieldset.liner
     %ul
       %li
-        = f.label :username, class: "bold"
+        = f.label :username
         = f.text_field :username
       %li
-        = f.label :email, class: "bold"
+        = f.label :email
         = f.email_field :email
       %li
-        = f.label :password, class: "bold"
+        = f.label :password
         = f.password_field :password
       %li
-        = f.submit 'Create account', class: "btn btn-big"
+        = f.submit 'Create account', class: "btn"

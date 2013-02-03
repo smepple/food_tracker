@@ -3,14 +3,14 @@
 %h1 Sign in
 %hr
 
-= form_tag sessions_path, class: "forms" do
-  %fieldset.liner
+= form_tag sessions_path do
+  %fieldset
     %ul
       %li
-        = label_tag :username, nil, class: "bold"
+        = label_tag :username, nil
         = text_field_tag :username
       %li
-        = label_tag :password, nil, class: "bold"
+        = label_tag :password, nil
         = password_field_tag :password
       %li
-        = submit_tag "Sign in", class: "btn btn-big"
+        = submit_tag "Sign in", class: "btn"

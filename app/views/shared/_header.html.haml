@@ -1,20 +1,18 @@
-%header#header
+%header
 
-  .container.row
+  .header-left
 
-    .sixth
+    =link_to APP_NAME, root_path
 
-      =link_to APP_NAME, root_path
+  .header-right
 
-    .sixth.push-right
+    - if signed_in?
 
-      - if signed_in?
+      Signed in as
+      = current_user.username
 
-        Signed in as
-        = current_user.username
+      = link_to "Sign out", signout_path, method: "delete"
 
-        = link_to "Sign out", signout_path, method: "delete"
+    - else
 
-      - else
-
-        = link_to "Sign in", signin_path
+      = link_to "Sign in", signin_path
