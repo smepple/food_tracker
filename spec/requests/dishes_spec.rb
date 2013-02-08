@@ -42,7 +42,9 @@ describe "Dishes" do
         end
 
         describe "after unsuccessful attempt to create a dish" do
-          before { click_button "Add dish" }
+          before do 
+            click_button "Add dish"
+          end
 
           it "should display errors" do
             page.should have_error_message "can't be blank"

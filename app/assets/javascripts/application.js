@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require jquery.timeago.js
 //= require jstz.min.js
+//= require parsley.min.js
 //= require_tree .

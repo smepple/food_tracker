@@ -23,8 +23,10 @@
 @import "goodies";
 
 /* Components */
+@import "components";
 @import "header";
 @import "autocomplete";
+@import "parsley";
 
 /* Controller-specific styles */
 @import "users";
