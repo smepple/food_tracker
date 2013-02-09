@@ -162,10 +162,11 @@ input[type="checkbox"] {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-textarea {
+textarea,
+select {
   position: relative;
   z-index: 2;
-  font-family: Helvetica, Arial, Tahoma, sans-serif;
+  font-family: 'PT Sans', $helvetica;
   height: 23px;
   border: 1px solid #ccc;
   margin: 0;
@@ -183,8 +184,14 @@ textarea {
   transition: border 0.3s ease-in;
 }
 
+select {
+  font-size: 13px;
+  height: 25px;
+}
+
 textarea {
   line-height: 1.4em;
+  height: 140px;
 }
 
 input.input-gray,

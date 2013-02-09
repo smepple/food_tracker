@@ -1,3 +1,8 @@
+- if @dish.photo_url.present?
+  - cache "dish_photo_#{@dish.id}" do
+    .photo
+      = filepicker_image_tag @dish.photo_url, quality: 30, 
+                                              crop: "0,400,4000,600"
 %h1= @dish.name
 .category
   %cite= @category.name

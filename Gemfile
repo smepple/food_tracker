@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'thin'
 gem 'numbers_and_words'
 gem 'date_validator'
+gem 'filepicker-rails'
 
 group :development, :test do
   gem 'sqlite3'

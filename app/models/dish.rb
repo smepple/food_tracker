@@ -13,12 +13,13 @@
 #  source_page :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  photo_url   :string(255)
 #
 
 class Dish < ActiveRecord::Base
   attr_accessible :category_id, :description, :eat_date, :name, 
                   :prep_time, :source_id, :source_page, :user_id,
-                  :category_name, :source_name
+                  :category_name, :source_name, :photo_url
 
   belongs_to :user
   belongs_to :category

@@ -20,6 +20,20 @@
                                             trigger: "keyup",
                                             "maxlength-message" => "Description must be 1000 characters or less" }
       %li
+        = f.label :photo_url, "Photo"
+        = f.filepicker_field :photo_url, button_text: "Select a file to upload",
+                                         button_class: "btn",
+                                         dragdrop: true,
+                                         drag_text: "or drop files here",
+                                         mimetypes: "image/png, image/jpeg",
+                                         services: "COMPUTER,
+                                                    FACEBOOK,
+                                                    GOOGLE_DRIVE,
+                                                    DROPBOX,
+                                                    PICASA,
+                                                    INSTAGRAM,
+                                                    FLICKR"
+      %li
         = f.label :eat_date
         = f.select :eat_date, [['Today', Time.now.in_time_zone(Time.zone)],
                                ['Yesterday', 1.day.ago.in_time_zone(Time.zone)],
