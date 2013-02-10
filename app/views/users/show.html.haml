@@ -4,12 +4,18 @@
 
   %h1= @user.username
 
-  = link_to "Add a dish", new_dish_path, class: "btn"
+  - if @dishes.empty?
+    = link_to "Add a dish", new_dish_path, class: "btn hint hint--right hint--always hint--info", data: { hint: "Add your first dish!" }
+  - else
+    = link_to "Add a dish", new_dish_path, class: "btn"
 
 .two-third
 
   %h2 Recent dishes
-  - @dishes.each do |d|
-    .dish
-      %strong= link_to d.name, dish_path(d)
-      %cite.timeago{title: d.eat_date}
+  - if @dishes.any?
+    - @dishes.each do |d|
+      .dish
+        %strong= link_to d.dish_name, dish_path(d)
+        %cite.timeago{title: d.eat_date}
+  - else
+    %cite You haven't added any dishes. Get cookin'!

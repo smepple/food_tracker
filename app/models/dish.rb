@@ -40,7 +40,8 @@ class Dish < ActiveRecord::Base
   validates :eat_date, date: { before: Date.tomorrow, message: "can't be in the future" }
 
   def category_name
-    category.try(:name)
+    name = category.try(:name)
+    name.capitalize if category
   end
 
   def category_name=(name)
@@ -48,10 +49,15 @@ class Dish < ActiveRecord::Base
   end
 
   def source_name
-    source.try(:name)
+    name = source.try(:name)
+    name.capitalize if source
   end
 
   def source_name=(name)
     self.source = Source.find_or_create_by_name(name) if name.present?
+  end
+
+  def dish_name
+    self.name.capitalize
   end
 end

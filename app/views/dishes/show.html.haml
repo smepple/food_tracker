@@ -1,19 +1,63 @@
+= provide :title, @dish.name
+
 - if @dish.photo_url.present?
   - cache "dish_photo_#{@dish.id}" do
     .photo
       = filepicker_image_tag @dish.photo_url, quality: 30, 
                                               crop: "0,400,4000,600"
-%h1= @dish.name
+
+%h1= best_in_place_if current_user == User.find(@dish.user_id), 
+                      @dish, :name, type: :input,
+                      inner_class: "best_in_place",
+                      classes: "hint hint--right hint--info",
+                      data: { hint: "Click to edit" },
+                      display_as: :dish_name
+
 .category
-  %cite= @category.name
+  %cite= @dish.category_name
+
 .prep-time
-  %cite= "#{@dish.prep_time} minutes"
+  %cite= best_in_place_if current_user == User.find(@dish.user_id),
+                          @dish, :prep_time, type: :select,
+                          collection: [[15, '15 minutes'],
+                                      [20, '20 minutes'], 
+                                      [30, '30 minutes'],
+                                      [45, '45 minutes'], 
+                                      [60, '1 hour'],
+                                      [90, '1 hour 30 minutes'],
+                                      [120, '2 hours'],
+                                      [150, '2 hours 30 minutes'],
+                                      [180, '3 hours']],
+                          classes: "cite hint hint--right hint--info",
+                          data: { hint: "Click to edit" },
+                          display_with: lambda { |value| prep_time_in_words(value) }
+
 .source
-  %cite= "From #{@source.name}"
+  %cite= "From #{@dish.source_name}"
+
 .eat_date
   %cite Eaten
-  %cite.timeago{title: @dish.eat_date}
+  - if current_user == User.find(@dish.user_id) && @dish.eat_date.to_datetime > 1.week.ago
+    %cite= best_in_place @dish, :eat_date, 
+                                type: :select, 
+                                collection: [[Time.now.in_time_zone(Time.zone).to_date, 'today'],
+                                            [1.day.ago.in_time_zone(Time.zone).to_date, 'yesterday'],
+                                            [2.days.ago.in_time_zone(Time.zone).to_date, '2 days ago'],
+                                            [3.days.ago.in_time_zone(Time.zone).to_date, '3 days ago'],
+                                            [4.days.ago.in_time_zone(Time.zone).to_date, '4 days ago'],
+                                            [5.days.ago.in_time_zone(Time.zone).to_date, '5 days ago'],
+                                            [6.days.ago.in_time_zone(Time.zone).to_date, '6 days ago'],
+                                            [1.week.ago.in_time_zone(Time.zone).to_date, '1 week ago']],
+                                classes: "cite hint hint--right hint--info",
+                                data: { hint: "Click to edit" }
+  - else
+    %cite.timeago{title: @dish.eat_date}
 
 %hr
 
-%blockquote= @dish.description
+%blockquote= best_in_place_if current_user == User.find(@dish.user_id),
+                              @dish, :description, type: :textarea,
+                              nil: "No description",
+                              inner_class: "best_in_place",
+                              classes: "hint hint--right hint--info",
+                              data: { hint: "Click to edit" }

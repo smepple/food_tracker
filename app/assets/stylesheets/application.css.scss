@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require hint.min.css
  */
 
 @import "bourbon";
@@ -26,7 +27,10 @@
 @import "components";
 @import "header";
 @import "autocomplete";
+
+/* Vendor-specific */
 @import "parsley";
+@import "best_in_place";
 
 /* Controller-specific styles */
 @import "users";

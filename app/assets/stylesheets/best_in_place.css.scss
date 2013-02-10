@@ -1,0 +1,24 @@
+blockquote span.best_in_place {
+  font-style: italic;
+  color: #888;
+}
+
+.best_in_place {
+  &:hover { cursor: pointer; }
+  input, textarea { width: 40%; }
+}
+
+.purr {
+  position: fixed;
+  top: 5%;
+  right: 50%;
+  width: 200px;
+  margin-right: -100px;
+  text-align: center;
+  padding: 15px;
+  background-color: #FCC;
+  border: solid 1px #C66;
+  &:first-letter { text-transform: uppercase; }
+  opacity: .75;
+  border-radius: 8px;
+}

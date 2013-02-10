@@ -118,10 +118,12 @@ blockquote {
   color: #666;
 }
 blockquote small,
-cite {
+cite,
+.cite {
   color: #888;
   font-style: italic;
 }
+
 blockquote p {
   margin-bottom: 1em;
   font-style: italic;

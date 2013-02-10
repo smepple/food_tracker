@@ -1,5 +1,6 @@
 class DishesController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :show]
+  respond_to :html, :json
 
   def new
     @user = current_user
@@ -22,6 +23,12 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     @category = Category.find(@dish.category_id)
     @source = Source.find(@dish.source_id)
+  end
+
+  def update
+    @dish = Dish.find(params[:id])
+    @dish.update_attributes(params[:dish])
+    respond_with_bip @dish
   end
 
   private

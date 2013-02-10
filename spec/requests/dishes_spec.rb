@@ -78,7 +78,7 @@ describe "Dishes" do
           end
 
           it "should list the dish on the user profile page" do
-            page.should have_content dish.name
+            page.should have_content dish.dish_name
           end
         end
       end
@@ -103,9 +103,49 @@ describe "Dishes" do
     it { should have_content dish.source_page }
   end
 
-  describe "editing a dish" do
-  end
+  # describe "editing a dish" do
 
-  describe "deleting a dish" do
-  end
+  #   let(:user) { Factory :user }
+  #   let(:dish) { Factory :dish }
+
+  #   before do
+  #     dish.user_id = user.id
+  #     dish.save!
+  #     valid_signin(user)
+  #     visit dish_path(dish)
+  #   end
+
+  #   describe "before changing values" do
+
+  #     it "should display the current dish name" do
+  #       page.should have_content dish.name
+  #     end
+  #   end
+
+  #   describe "after changing values", type: :request do
+  #     # TODO: these tests don't work (helper methods aren't being recognized)
+
+  #     self.use_transactional_fixtures = false
+
+  #     it "should display the new dish name", js: true do
+  #       bip_text dish, :name, "new name"
+  #       page.should have_content "new name"
+  #     end
+
+  #     it "should display the new prep time", js: true do
+  #       bip_select dish, :prep_time, "15 minutes"
+  #       page.should have_content "15 minutes"
+  #     end
+
+  #     it "should display the new eat date", js: true do
+  #       bip_select dish, :eat_date, "1 week ago"
+  #       page.should have_content "Eaten 1 week ago"
+  #     end
+
+  #     it "should display the new description", js: true do
+  #       bip_area dish, :description, "Lorem ipsum dolor sit amet"
+  #       page.should have_content "Lorem ipsum dolor sit amet"
+  #     end
+  #   end
+  # end
 end
