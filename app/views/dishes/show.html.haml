@@ -53,11 +53,22 @@
   - else
     %cite.timeago{title: @dish.eat_date}
 
+.description
+  %blockquote= best_in_place_if current_user == User.find(@dish.user_id),
+                                @dish, :description, type: :textarea,
+                                nil: "No description",
+                                inner_class: "best_in_place",
+                                classes: "hint hint--right hint--info",
+                                data: { hint: "Click to edit" }
+
 %hr
 
-%blockquote= best_in_place_if current_user == User.find(@dish.user_id),
-                              @dish, :description, type: :textarea,
-                              nil: "No description",
-                              inner_class: "best_in_place",
-                              classes: "hint hint--right hint--info",
-                              data: { hint: "Click to edit" }
+.comments
+  %h3.comments_count{"data-value" => @comments.count}= pluralize(@comments.count, "comment")
+  .add_comment
+    = link_to "Add a comment", new_comment_path(dish_id: @dish.id), remote: true
+  .comments_list
+    - if @comments.any?
+      = nested_comments @comments.arrange(order: "created_at")
+    - else
+      %em.empty No comments on this dish

@@ -1,0 +1,26 @@
+.comments {
+  margin-bottom: 60px;
+}
+
+.comment {
+  display: inline-block;
+  a { display: block; }
+  hr { margin-bottom: 5px; }
+}
+
+.reply {
+  font-size: 12px;
+}
+
+.add_comment {
+  margin-bottom: 10px;
+}
+
+.nested_comments {
+  margin-left: 10px;
+}
+
+#comment_content {
+  width: 50%;
+  height: 5em;
+}

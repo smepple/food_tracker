@@ -9,7 +9,8 @@ gem 'thin'
 gem 'numbers_and_words'
 gem 'date_validator'
 gem 'filepicker-rails'
-gem "best_in_place"
+gem 'best_in_place'
+gem 'ancestry'
 
 group :development, :test do
   gem 'sqlite3'

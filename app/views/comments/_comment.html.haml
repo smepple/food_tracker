@@ -1,0 +1,6 @@
+= div_for comment do
+  - @commenter = User.find(comment.user_id)
+  = link_to @commenter.username, user_path(@commenter)
+  = comment.content
+  = link_to "Reply", new_comment_path(dish_id: comment.dish_id, parent_id: comment), remote: true, class: "reply"
+  %hr

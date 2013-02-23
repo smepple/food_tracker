@@ -37,6 +37,7 @@ describe Dish do
   it { should respond_to :category_name }
   it { should respond_to :source_name }
   it { should respond_to :photo_url }
+  it { should respond_to :comments }
 
   describe "when user_id is not present" do
     before { dish.user_id = nil }

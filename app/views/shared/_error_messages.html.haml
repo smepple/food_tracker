@@ -8,14 +8,12 @@
 
   .alert
     %h4
-      %p
-        Oops,
-        - if object.errors.count == 1
-          there's
-          = "#{num_errors_to_words} #{error_word}:"
-        - else
-          there're
-          = "#{num_errors_to_words} #{error_word}:"
-    %p
-      - object.errors.full_messages.each do |msg|
-        %li= msg
+      Oops,
+      - if object.errors.count == 1
+        there's
+        = "#{num_errors_to_words} #{error_word}:"
+      - else
+        there're
+        = "#{num_errors_to_words} #{error_word}:"
+    - object.errors.full_messages.each do |msg|
+      %li= msg

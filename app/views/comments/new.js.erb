@@ -1,0 +1,20 @@
+<% if params[:parent_id] %>
+  $(".add_comment").hide();
+  $("#comment_<%= params[:parent_id] %>").next(".nested_comments").prepend("<%= escape_javascript render("form") %>");
+  $("#comment_<%= params[:parent_id] %>").next(".nested_comments").find("#comment_content")[0].focus();
+  $(".reply").hide();
+  $(".cancel_button").on("click", function(event) {
+    $("#new_comment").remove();
+    $(".add_comment").show();
+    $(".reply").show();
+  });
+<% else %>
+  $(".add_comment").hide().after('<%= j render "form" %>');
+  $(".reply").hide();
+  $("#comment_content").focus();
+  $(".cancel_button").on("click", function(event) {
+    $("#new_comment").remove();
+    $(".add_comment").show();
+    $(".reply").show();
+  });
+<% end %>

@@ -23,6 +23,8 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     @category = Category.find(@dish.category_id)
     @source = Source.find(@dish.source_id)
+    @comments = @dish.comments
+    @comment = Comment.new(dish_id: params[:id], user_id: current_user.id)
   end
 
   def update

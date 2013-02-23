@@ -1,0 +1,29 @@
+<% if @comment.parent_id.present? %>
+  var container = $("#<%= dom_id(@comment.parent) %>").next(".nested_comments");
+<% else %>
+  var container = $(".comments_list");
+<% end %>
+
+<% if @comment.errors.present? %>
+  $(".alert").remove();
+  <% if @comment.parent_id.present? %>
+    container.find("form").prepend("<%= j render 'shared/error_messages', object: @comment %>");
+  <% else %>
+    container.prev("form").prepend("<%= j render 'shared/error_messages', object: @comment %>");
+  <% end %>
+<% else %>
+  $(".empty").remove();
+  $("#new_comment").remove();
+  $(".add_comment").show();
+  $(".reply").show();
+  var commentsCount = parseInt($(".comments_count").attr("data-value"));
+  commentsCount += 1;
+  var string;
+  if (commentsCount == 1) {
+    string = "comment";
+  } else {
+    string = "comments";
+  }
+  $(".comments_count").replaceWith(['<h3 class="comments_count" data-value=', commentsCount, '>', commentsCount, ' ', string, '</h3>'].join(""));
+  container.append('<%= j render(@comment) %><div class="nested_comments"></div>');
+<% end %>

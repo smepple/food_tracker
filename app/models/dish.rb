@@ -24,6 +24,7 @@ class Dish < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :source
+  has_many :comments, dependent: :destroy
 
   default_scope order "eat_date DESC"
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208160031) do
+ActiveRecord::Schema.define(:version => 20130215115856) do
 
   create_table "authors", :force => true do |t|
     t.string   "firstname"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20130208160031) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "dish_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
 
   create_table "dishes", :force => true do |t|
     t.integer  "user_id"

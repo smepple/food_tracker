@@ -1,0 +1,8 @@
+= form_for @comment, remote: true do |f|
+  = render 'shared/error_messages', object: f.object
+  = f.hidden_field :dish_id
+  = f.hidden_field :parent_id if params[:parent_id]
+  = f.text_area :content
+  .form_actions
+    = f.submit "Post comment", class: "btn"
+    = link_to "Cancel", '#', remote: true, class: "cancel_button"

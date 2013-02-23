@@ -67,3 +67,14 @@ RSpec::Matchers.define :have_warning_message do |message|
     page.should have_selector 'div.alert.alert-notice', text: message
   end
 end
+
+RSpec::Matchers.define :have_comment_count do |count|
+  match do |page|
+    if count == 1
+      string = "comment"
+    else
+      string = "comments"
+    end
+    page.should have_selector 'h3.comments_count', text: "#{count} #{string}"
+  end
+end
