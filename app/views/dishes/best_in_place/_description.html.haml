@@ -1,0 +1,6 @@
+= best_in_place_if current_user == User.find(@dish.user_id),
+                   @dish, :description, type: :textarea,
+                   nil: "No description",
+                   inner_class: "best_in_place",
+                   classes: "hint hint--right hint--info",
+                   data: { hint: "Click to edit" }

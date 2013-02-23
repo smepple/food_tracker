@@ -1,0 +1,12 @@
+= best_in_place @dish, :eat_date, 
+                       type: :select, 
+                       collection: [[Time.now.in_time_zone(Time.zone).to_date, 'today'],
+                                    [1.day.ago.in_time_zone(Time.zone).to_date, 'yesterday'],
+                                    [2.days.ago.in_time_zone(Time.zone).to_date, '2 days ago'],
+                                    [3.days.ago.in_time_zone(Time.zone).to_date, '3 days ago'],
+                                    [4.days.ago.in_time_zone(Time.zone).to_date, '4 days ago'],
+                                    [5.days.ago.in_time_zone(Time.zone).to_date, '5 days ago'],
+                                    [6.days.ago.in_time_zone(Time.zone).to_date, '6 days ago'],
+                                    [1.week.ago.in_time_zone(Time.zone).to_date, '1 week ago']],
+                       classes: "cite hint hint--right hint--info",
+                       data: { hint: "Click to edit" }
