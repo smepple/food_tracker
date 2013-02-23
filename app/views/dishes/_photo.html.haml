@@ -1,0 +1,3 @@
+- cache "dish_photo_#{@dish.id}" do
+  .photo
+    = filepicker_image_tag @dish.photo_url, quality: 30, crop: "0,400,4000,600"

@@ -1,74 +1,64 @@
 = provide :title, @dish.name
 
-- if @dish.photo_url.present?
-  - cache "dish_photo_#{@dish.id}" do
-    .photo
-      = filepicker_image_tag @dish.photo_url, quality: 30, 
-                                              crop: "0,400,4000,600"
+- present @dish do |dish_presenter|
 
-%h1= best_in_place_if current_user == User.find(@dish.user_id), 
-                      @dish, :name, type: :input,
-                      inner_class: "best_in_place",
-                      classes: "hint hint--right hint--info",
-                      data: { hint: "Click to edit" },
-                      display_as: :dish_name
+  = dish_presenter.photo
 
-.category
-  %cite= @dish.category_name
+  %h1= best_in_place_if current_user == User.find(@dish.user_id), 
+                        @dish, :name, type: :input,
+                        inner_class: "best_in_place",
+                        classes: "hint hint--right hint--info",
+                        data: { hint: "Click to edit" },
+                        display_as: :dish_name
 
-.prep-time
-  %cite= best_in_place_if current_user == User.find(@dish.user_id),
-                          @dish, :prep_time, type: :select,
-                          collection: [[15, '15 minutes'],
-                                      [20, '20 minutes'], 
-                                      [30, '30 minutes'],
-                                      [45, '45 minutes'], 
-                                      [60, '1 hour'],
-                                      [90, '1 hour 30 minutes'],
-                                      [120, '2 hours'],
-                                      [150, '2 hours 30 minutes'],
-                                      [180, '3 hours']],
-                          classes: "cite hint hint--right hint--info",
-                          data: { hint: "Click to edit" },
-                          display_with: lambda { |value| prep_time_in_words(value) }
+  .category
+    %cite= @dish.category_name
 
-.source
-  %cite= "From #{@dish.source_name}"
+  .prep-time
+    %cite= best_in_place_if current_user == User.find(@dish.user_id),
+                            @dish, :prep_time, type: :select,
+                            collection: [[15, '15 minutes'],
+                                        [20, '20 minutes'], 
+                                        [30, '30 minutes'],
+                                        [45, '45 minutes'], 
+                                        [60, '1 hour'],
+                                        [90, '1 hour 30 minutes'],
+                                        [120, '2 hours'],
+                                        [150, '2 hours 30 minutes'],
+                                        [180, '3 hours']],
+                            classes: "cite hint hint--right hint--info",
+                            data: { hint: "Click to edit" },
+                            display_with: lambda { |value| prep_time_in_words(value) }
 
-.eat_date
-  %cite Eaten
-  - if current_user == User.find(@dish.user_id) && @dish.eat_date.to_datetime > 1.week.ago
-    %cite= best_in_place @dish, :eat_date, 
-                                type: :select, 
-                                collection: [[Time.now.in_time_zone(Time.zone).to_date, 'today'],
-                                            [1.day.ago.in_time_zone(Time.zone).to_date, 'yesterday'],
-                                            [2.days.ago.in_time_zone(Time.zone).to_date, '2 days ago'],
-                                            [3.days.ago.in_time_zone(Time.zone).to_date, '3 days ago'],
-                                            [4.days.ago.in_time_zone(Time.zone).to_date, '4 days ago'],
-                                            [5.days.ago.in_time_zone(Time.zone).to_date, '5 days ago'],
-                                            [6.days.ago.in_time_zone(Time.zone).to_date, '6 days ago'],
-                                            [1.week.ago.in_time_zone(Time.zone).to_date, '1 week ago']],
-                                classes: "cite hint hint--right hint--info",
-                                data: { hint: "Click to edit" }
-  - else
-    %cite.timeago{title: @dish.eat_date}
+  .source
+    %cite= "From #{@dish.source_name}"
 
-.description
-  %blockquote= best_in_place_if current_user == User.find(@dish.user_id),
-                                @dish, :description, type: :textarea,
-                                nil: "No description",
-                                inner_class: "best_in_place",
-                                classes: "hint hint--right hint--info",
-                                data: { hint: "Click to edit" }
-
-%hr
-
-.comments
-  %h3.comments_count{"data-value" => @comments.count}= pluralize(@comments.count, "comment")
-  .add_comment
-    = link_to "Add a comment", new_comment_path(dish_id: @dish.id), remote: true
-  .comments_list
-    - if @comments.any?
-      = nested_comments @comments.arrange(order: "created_at")
+  .eat_date
+    %cite Eaten
+    - if current_user == User.find(@dish.user_id) && @dish.eat_date.to_datetime > 1.week.ago
+      %cite= best_in_place @dish, :eat_date, 
+                                  type: :select, 
+                                  collection: [[Time.now.in_time_zone(Time.zone).to_date, 'today'],
+                                              [1.day.ago.in_time_zone(Time.zone).to_date, 'yesterday'],
+                                              [2.days.ago.in_time_zone(Time.zone).to_date, '2 days ago'],
+                                              [3.days.ago.in_time_zone(Time.zone).to_date, '3 days ago'],
+                                              [4.days.ago.in_time_zone(Time.zone).to_date, '4 days ago'],
+                                              [5.days.ago.in_time_zone(Time.zone).to_date, '5 days ago'],
+                                              [6.days.ago.in_time_zone(Time.zone).to_date, '6 days ago'],
+                                              [1.week.ago.in_time_zone(Time.zone).to_date, '1 week ago']],
+                                  classes: "cite hint hint--right hint--info",
+                                  data: { hint: "Click to edit" }
     - else
-      %em.empty No comments on this dish
+      %cite.timeago{title: @dish.eat_date}
+
+  .description
+    %blockquote= best_in_place_if current_user == User.find(@dish.user_id),
+                                  @dish, :description, type: :textarea,
+                                  nil: "No description",
+                                  inner_class: "best_in_place",
+                                  classes: "hint hint--right hint--info",
+                                  data: { hint: "Click to edit" }
+
+  %hr
+
+  = render 'dishes/comments'

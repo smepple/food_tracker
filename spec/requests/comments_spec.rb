@@ -7,31 +7,46 @@ describe "Comments" do
 
   describe "viewing comments" do
 
-    let(:comment) { Factory :comment }
+    before { valid_signin user }
 
-    before do
-      valid_signin user
-      visit dish_path(Dish.find(comment.dish_id))
+    describe "when no comments are present" do
+
+      before { visit dish_path(dish) }
+
+      it "should show a comment count of 0" do
+        page.should have_comment_count(0)
+      end
+
+      it "should show empty state text" do
+        page.should have_selector "em", text: "No comments on this dish"
+      end
     end
 
-    it "should show the count of comments" do
-      page.should have_comment_count(1)
-    end
+    describe "when comments are present" do
 
-    it "should show link to add new comment" do
-      page.should have_link "Add a comment"
-    end
+      let(:comment) { Factory :comment }
 
-    it "should show the commenter name" do
-      page.should have_link User.find(comment.user_id).username
-    end
+      before { visit dish_path(Dish.find(comment.dish_id)) }
 
-    it "should show the comment content" do
-      page.should have_content comment.content
-    end
+      it "should show the count of comments" do
+        page.should have_comment_count(1)
+      end
 
-    it "should show a reply link" do
-      page.should have_link "Reply"
+      it "should show link to add new comment" do
+        page.should have_link "Add a comment"
+      end
+
+      it "should show the commenter name" do
+        page.should have_link User.find(comment.user_id).username
+      end
+
+      it "should show the comment content" do
+        page.should have_content comment.content
+      end
+
+      it "should show a reply link" do
+        page.should have_link "Reply"
+      end
     end
   end
 
