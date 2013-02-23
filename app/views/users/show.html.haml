@@ -1,21 +1,17 @@
-= provide :title, "#{@user.username}"
+= provide :title, @user.username
 
-.one-third
+- present @user do |user_presenter|
 
-  %h1= @user.username
+  .one-third
 
-  - if @dishes.empty?
-    = link_to "Add a dish", new_dish_path, class: "btn hint hint--right hint--always hint--info", data: { hint: "Add your first dish!" }
-  - else
-    = link_to "Add a dish", new_dish_path, class: "btn"
+    .profile
+      %h1= @user.username
 
-.two-third
+    .new_dish
+      = user_presenter.new_dish_button(new_dish_path)
 
-  %h2 Recent dishes
-  - if @dishes.any?
-    - @dishes.each do |d|
-      .dish
-        %strong= link_to d.dish_name, dish_path(d)
-        %cite.timeago{title: d.eat_date}
-  - else
-    %cite You haven't added any dishes. Get cookin'!
+  .two-third
+
+    .my_dishes
+      %h2 My dishes
+      = user_presenter.user_dishes_list

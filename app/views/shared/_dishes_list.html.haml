@@ -1,0 +1,4 @@
+- dishes.each do |dish|
+  = div_for dish do
+    %strong= link_to dish.dish_name, dish_path(dish)
+    %cite.timeago{title: dish.eat_date}
