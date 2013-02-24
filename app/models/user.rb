@@ -22,11 +22,11 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
-  validates_presence_of :username, :email
+  validates_presence_of :username, :email, :password
   validates_uniqueness_of :username, :email
   validates_format_of :email, with: VALID_EMAIL_REGEX
-  validates_length_of :username, in: MIN_USERNAME_LENGTH..MAX_USERNAME_LENGTH
-  validates_length_of :password, in: MIN_PASSWORD_LENGTH..MAX_PASSWORD_LENGTH
+  validates_length_of :username, in: MIN_USER_USERNAME_LENGTH..MAX_USER_USERNAME_LENGTH
+  validates_length_of :password, in: MIN_USER_PASSWORD_LENGTH..MAX_USER_PASSWORD_LENGTH
 
   private
   

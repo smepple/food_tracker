@@ -40,7 +40,7 @@ describe Comment do
   end
 
   describe "when content is too long" do
-    before { comment.content = "a" * (MAX_COMMENT_LENGTH + 1) }
+    before { comment.content = "a" * (MAX_COMMENT_CONTENT_LENGTH + 1) }
     it { should_not be_valid }
   end
 end

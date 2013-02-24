@@ -22,5 +22,5 @@ class Comment < ActiveRecord::Base
   scope :recent, order("created_at DESC")
 
   validates_presence_of :dish_id, :user_id, :content
-  validates_length_of :content, maximum: MAX_COMMENT_LENGTH
+  validates_length_of :content, maximum: MAX_COMMENT_CONTENT_LENGTH
 end

@@ -1,19 +1,29 @@
 APP_NAME = 'FoodTracker'
 
-MIN_USERNAME_LENGTH = 2
-MAX_USERNAME_LENGTH = 16
-MIN_PASSWORD_LENGTH = 6
-MAX_PASSWORD_LENGTH = 32
+# Users
 
-VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-VALID_URL_REGEX = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+MIN_USER_USERNAME_LENGTH = 2
+MAX_USER_USERNAME_LENGTH = 16
+MIN_USER_PASSWORD_LENGTH = 6
+MAX_USER_PASSWORD_LENGTH = 32
+
+# Dishes
 
 MAX_DISH_NAME_LENGTH = 250
 MAX_DISH_DESCRIPTION_LENGTH = 1000
 MIN_DISH_PREP_TIME = 5
 MIN_DISH_SOURCE_PAGE = 1
 
+# Sources
+
 MIN_SOURCE_NAME_LENGTH = 3
 MAX_SOURCE_NAME_LENGTH = 150
 
-MAX_COMMENT_LENGTH = 500
+# Comments
+
+MAX_COMMENT_CONTENT_LENGTH = 500
+
+# Regexes
+
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+VALID_URL_REGEX = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix

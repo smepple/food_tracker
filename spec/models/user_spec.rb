@@ -65,22 +65,22 @@ describe User do
   end
 
   describe "when username is too short" do
-    before { user.username = 'a' * (MIN_USERNAME_LENGTH - 1) }
+    before { user.username = 'a' * (MIN_USER_USERNAME_LENGTH - 1) }
     it { should_not be_valid }
   end
 
   describe "when password is too short" do
-    before { user.password = 'a' * (MIN_PASSWORD_LENGTH - 1) }
+    before { user.password = 'a' * (MIN_USER_PASSWORD_LENGTH - 1) }
     it { should_not be_valid }
   end
 
   describe "when username is too long" do
-    before { user.username = 'a' * (MAX_USERNAME_LENGTH + 1) }
+    before { user.username = 'a' * (MAX_USER_USERNAME_LENGTH + 1) }
     it { should_not be_valid }
   end
 
   describe "when password is too long" do
-    before { user.password = 'a' * (MAX_PASSWORD_LENGTH + 1) }
+    before { user.password = 'a' * (MAX_USER_PASSWORD_LENGTH + 1) }
     it { should_not be_valid }
   end
 

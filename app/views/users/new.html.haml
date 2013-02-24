@@ -3,38 +3,16 @@
 %h1 Sign up
 %hr
 
-= form_for @user, html: { "data-validate" => "parsley", 
-                          "data-focus" => "first",
-                          "data-trigger" => "keyup" } do |f|
+= parsley_form_for @user do |f|
+  
   = render 'shared/error_messages', object: f.object
-  %fieldset.liner
-    %ul
-      %li
-        = f.label :username
-        = f.text_field :username, 
-                       data: { type: "alphanum",
-                               "type-alphanum-message" => "Username must contain alphanumeric characters only",
-                               required: true,
-                               "required-message" => "",
-                               rangelength: [MIN_USERNAME_LENGTH,
-                                             MAX_USERNAME_LENGTH],
-                               trigger: "keyup",
-                               "validation-minlength" => 2,
-                               "rangelength-message" => "Please enter a username between 2 and 16 characters long" }
-      %li
-        = f.label :email
-        = f.email_field :email,
-                        data: { type: "email",
-                                required: true,
-                                trigger: "change",
-                                "validation-minlength" => 1,
-                                "error-message" => "Please enter a valid email address" }
-      %li
-        = f.label :password
-        = f.password_field :password,
-                           data: { required: true,
-                                   rangelength: [MIN_PASSWORD_LENGTH,
-                                                 MAX_PASSWORD_LENGTH],
-                                   "error-message" => "Please enter a password between 6 and 32 characters long" }
-      %li
-        = f.submit 'Create account', class: "btn"
+  
+  = form_wrapper do
+
+    = f.text_field :username, input_type: "username"
+    
+    = f.email_field :email
+    
+    = f.password_field :password
+    
+    = f.submit "Create account"

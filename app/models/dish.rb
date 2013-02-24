@@ -29,7 +29,8 @@ class Dish < ActiveRecord::Base
   default_scope order "eat_date DESC"
 
   validates_presence_of :user_id, :name, :eat_date, :prep_time,
-                        :category_id, :source_id
+                        :category_id, :source_id, :category_name,
+                        :source_name
 
   validates_length_of :name, maximum: MAX_DISH_NAME_LENGTH
   validates_length_of :description, maximum: MAX_DISH_DESCRIPTION_LENGTH
