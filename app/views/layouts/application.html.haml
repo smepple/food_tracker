@@ -8,11 +8,13 @@
     = csrf_meta_tags
   %body
 
-    = render 'shared/header'
-
     .container
 
-      - flash.each do |key, value|
-        = content_tag(:div, value, class: "alert alert-#{key}")
+      = render 'shared/header'
+
+      - if flash.any?
+        .flash-messages
+          - flash.each do |key, value|
+            = content_tag :div, value, class: "alert alert-#{key}"
 
       = yield

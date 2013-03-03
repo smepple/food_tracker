@@ -29,7 +29,6 @@ describe "Authorization" do
       it "should redirect to the user profile page" do
         page.should have_page_title user.username
         page.should have_content user.username
-        page.should have_signed_in_message user.username
         page.should have_signout_link
         page.should_not have_signin_link
       end
@@ -65,7 +64,6 @@ describe "Authorization" do
       it "should redirect to the user profile page" do
         page.should have_page_title user.username
         page.should have_content user.username
-        page.should have_signed_in_message user.username
         page.should have_signout_link
         page.should_not have_signin_link
       end
@@ -102,7 +100,6 @@ describe "Authorization" do
       it "should redirect to the user profile page" do
         page.should have_page_title user.username
         page.should have_content user.username
-        page.should have_signed_in_message user.username
         page.should have_signout_link
         page.should_not have_signin_link
       end
@@ -144,7 +141,6 @@ describe "Authorization" do
         it "should redirect to their own user profile page" do
           page.should have_page_title another_user.username
           page.should have_content another_user.username
-          page.should have_signed_in_message another_user.username
           page.should have_signout_link
           page.should_not have_signin_link
         end
@@ -160,7 +156,6 @@ describe "Authorization" do
         it "should render the user profile page" do
           page.should have_page_title user.username
           page.should have_content user.username
-          page.should have_signed_in_message user.username
           page.should have_signout_link
           page.should_not have_signin_link
         end

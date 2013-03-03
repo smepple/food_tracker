@@ -2,14 +2,15 @@
 
   .header-left
 
-    =link_to APP_NAME, root_path
+    .logo
+      =link_to APP_NAME, root_path
 
   .header-right
 
     - if signed_in?
 
-      Signed in as
-      = current_user.username
+      / Signed in as
+      / = current_user.username
 
       = link_to "Sign out", signout_path, method: "delete"
 

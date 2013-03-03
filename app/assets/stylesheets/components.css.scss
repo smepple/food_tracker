@@ -10,7 +10,7 @@
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  font-family: 'PT Sans', $helvetica;
+  font-family: 'Open Sans', $helvetica;
   line-height: 1;
   font-size: 13px;
   font-weight: normal;
@@ -159,4 +159,12 @@
     border: 0;
     padding: 0;
   }
+}
+
+/* Flash messages */
+/*--------------------------------------------------------------------------*/
+
+.flash-messages {
+  text-align: center;
+  padding: 0.5em 0 0 0;
 }

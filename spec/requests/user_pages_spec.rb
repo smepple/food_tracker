@@ -24,8 +24,7 @@ describe "User pages" do
       end
 
       it "should display empty state content in the dishes list" do
-        page.should have_selector "h2", text: "My dishes"
-        page.should have_selector "cite", text: "You haven't added any dishes. Get cookin'!"
+        page.should have_content "You haven't added any dishes. Get cookin'!"
       end
     end
   end

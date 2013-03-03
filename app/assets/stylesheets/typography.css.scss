@@ -6,20 +6,23 @@
   License: free
 */
 
-@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800,300,600);
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
 
 body {
   background: #ffffff;
-  color: #000000;
+  color: #222;
   font-size: 0.875em;
   line-height: 1.5em;
-  font-family: 'PT Sans', $helvetica
+  font-family: 'Open Sans', $helvetica;
 }
 a {
+  text-decoration: none;
   color: #336699;
 }
 a:hover {
-  color: #19334d;
+  text-decoration: underline;
+  color: #555;
 }
 h1,
 h2,
@@ -27,34 +30,57 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: bold;
   margin-bottom: 0.5em;
 }
 h1 {
+  font-weight: 800;
   font-size: 2.5714285714285716em;
   line-height: 1em;
 }
 h2 {
+  font-weight: 800;
   font-size: 2.142857142857143em;
   line-height: 1.1em;
 }
 h3 {
+  font-weight: 600;
   font-size: 1.7142857142857142em;
   line-height: 1.3em;
 }
 h4 {
+  font-weight: 600;
   font-size: 1.2857142857142858em;
   line-height: 1.3em;
 }
 h5 {
+  font-weight: 600;
   font-size: 1.1428571428571428em;
   line-height: 1.3em;
 }
 h6 {
+  font-weight: 600;
   font-size: 1em;
   line-height: 1.3em;
   text-transform: uppercase;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  a { 
+    color: #222;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 hgroup h1,
 hgroup h2,
 hgroup h3,

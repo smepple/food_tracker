@@ -1,0 +1,28 @@
+.dishes-list {
+
+  .dish {
+    width: 10em;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #FEE;
+
+    .dish-name {
+      margin-bottom: 2em;
+    }
+  }
+}
+
+.empty-state {
+  font-size: 32px;
+  line-height: 1.2em;
+  padding: 1em;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+
+  @include media($mobile) {
+    width: 80%;
+  }
+}

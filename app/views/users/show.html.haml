@@ -1,17 +1,24 @@
 = provide :title, @user.username
 
-- present @user do |user_presenter|
+.inner-container
 
-  .one-third
+  - present @user do |user_presenter|
 
-    .profile
-      %h1= @user.username
+    .one-quarter.user-info
 
-    .new_dish
-      = user_presenter.new_dish_button(new_dish_path)
+      .profile
+        = user_presenter.username
 
-  .two-third
+      .member-since
+        = user_presenter.member_since
 
-    .my_dishes
-      %h2 My dishes
-      = user_presenter.user_dishes_list
+      .dishes-count
+        %p= user_presenter.user_dishes_count
+
+      .new-dish
+        %p= user_presenter.new_dish_button(new_dish_path)
+
+    .three-quarters.user-dishes
+
+      .dishes-list
+        = user_presenter.user_dishes_list

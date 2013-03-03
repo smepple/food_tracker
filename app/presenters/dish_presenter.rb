@@ -15,6 +15,10 @@ class DishPresenter < BasePresenter
     render 'dishes/best_in_place/prep_time'
   end
 
+  def source_name
+    "From #{dish.source_name}"
+  end
+
   def eat_date
     if current_user == User.find(dish.user_id) && dish.eat_date.to_datetime > 1.week.ago
       render 'dishes/best_in_place/eat_date'

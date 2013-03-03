@@ -1,45 +1,47 @@
 = provide :title, "New dish"
 
-%h1 Add a dish
-%hr
+.inner-container
 
-= parsley_form_for @dish do |f|
-  
-  = render 'shared/error_messages', object: f.object
-  
-  = form_wrapper do
-    
-    = f.text_field :name
-    
-    = f.text_area :description
-    
-    = f.filepicker_field :photo_url, label: "Photo"
-    
-    = f.select :eat_date, [['Today', Time.now.in_time_zone(Time.zone)],
-                           ['Yesterday', 1.day.ago.in_time_zone(Time.zone)],
-                           ['2 days ago', 2.days.ago.in_time_zone(Time.zone)],
-                           ['3 days ago', 3.days.ago.in_time_zone(Time.zone)],
-                           ['4 days ago', 4.days.ago.in_time_zone(Time.zone)],
-                           ['5 days ago', 5.days.ago.in_time_zone(Time.zone)],
-                           ['6 days ago', 6.days.ago.in_time_zone(Time.zone)],
-                           ['1 week ago', 1.week.ago.in_time_zone(Time.zone)]],
-                           prompt: "When did you eat this dish?"
-    
-    = f.select :prep_time, [['15 min', 15],
-                            ['20 min', 20],
-                            ['30 min', 30],
-                            ['45 min', 45],
-                            ['1 hour', 60],
-                            ['1 hour 30 min', 90],
-                            ['2 hours', 120],
-                            ['2 hours 30 min', 150],
-                            ['3 hours', 180]],
-                            prompt: "How long did it take to make?"
-    
-    = f.text_field :category_name, label: "Category", 
-                   data: { autocomplete_source: categories_path }
+  %h1 Add a dish
+  %hr
 
-    = f.text_field :source_name, label: "Source", 
-                   data: { autocomplete_source: sources_path }
+  = parsley_form_for @dish do |f|
     
-    = f.submit "Add dish"
+    = render 'shared/error_messages', object: f.object
+    
+    = form_wrapper do
+      
+      = f.text_field :name
+      
+      = f.text_area :description
+      
+      = f.filepicker_field :photo_url, label: "Photo"
+      
+      = f.select :eat_date, [['Today', Time.now.in_time_zone(Time.zone)],
+                             ['Yesterday', 1.day.ago.in_time_zone(Time.zone)],
+                             ['2 days ago', 2.days.ago.in_time_zone(Time.zone)],
+                             ['3 days ago', 3.days.ago.in_time_zone(Time.zone)],
+                             ['4 days ago', 4.days.ago.in_time_zone(Time.zone)],
+                             ['5 days ago', 5.days.ago.in_time_zone(Time.zone)],
+                             ['6 days ago', 6.days.ago.in_time_zone(Time.zone)],
+                             ['1 week ago', 1.week.ago.in_time_zone(Time.zone)]],
+                             prompt: "When did you eat this dish?"
+      
+      = f.select :prep_time, [['15 min', 15],
+                              ['20 min', 20],
+                              ['30 min', 30],
+                              ['45 min', 45],
+                              ['1 hour', 60],
+                              ['1 hour 30 min', 90],
+                              ['2 hours', 120],
+                              ['2 hours 30 min', 150],
+                              ['3 hours', 180]],
+                              prompt: "How long did it take to make?"
+      
+      = f.text_field :category_name, label: "Category", 
+                     data: { autocomplete_source: categories_path }
+
+      = f.text_field :source_name, label: "Source", 
+                     data: { autocomplete_source: sources_path }
+      
+      = f.submit "Add dish"

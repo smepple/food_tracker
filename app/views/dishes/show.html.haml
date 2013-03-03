@@ -4,25 +4,27 @@
 
   = dish_presenter.photo
 
-  .name
-    %h1= dish_presenter.name
+  .inner-container
 
-  .category
-    %cite= @dish.category_name
+    .name
+      %h1= dish_presenter.name
 
-  .prep-time
-    %cite= dish_presenter.prep_time
+    .category
+      %cite= @dish.category_name
 
-  .source
-    %cite= "From #{@dish.source_name}"
+    .prep-time
+      %cite= dish_presenter.prep_time
 
-  .eat_date
-    %cite Eaten
-    %cite= dish_presenter.eat_date
+    .source
+      %cite= dish_presenter.source_name
 
-  .description
-    %blockquote= dish_presenter.description
+    .eat_date
+      %cite Eaten
+      %cite= dish_presenter.eat_date
 
-  %hr
+    .description
+      %blockquote= dish_presenter.description
 
-  = render 'dishes/comments'
+    %hr
+
+    = render 'dishes/comments'

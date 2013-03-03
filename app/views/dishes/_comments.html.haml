@@ -1,5 +1,5 @@
 - present @dish do |dish_presenter|
-  .comments
+  .comments#comments
     %h3.comments_count{"data-value" => @dish.comments.count}= pluralize(@dish.comments.count, "comment")
     .add_comment
       = link_to "Add a comment", new_comment_path(dish_id: @dish.id), remote: true

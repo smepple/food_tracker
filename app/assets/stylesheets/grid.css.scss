@@ -1,23 +1,29 @@
-.container {
+$mobile: new-breakpoint(max-width 800px 6);
+
+.outer-container {
   @include outer-container;
+  max-width: 100%;
 }
 
-.header-left {
-  @include span-columns(5.5);
-  @include shift(0.5);
+.inner-container {
+  @include fill-parent;
+  @include span-columns(12);
+  @include pad(default 4em);
 }
 
-.header-right {
-  @include span-columns(2.5);
-  @include shift(3.5);
-  @include omega();
+.one-quarter {
+  @include span-columns(3);
+
+  @include media($mobile) {
+    @include span-columns(6);
+  }
 }
 
-.one-third {
-  @include span-columns(4);
-}
+.three-quarters {
+  @include span-columns(9);
+  @include omega;
 
-.two-third {
-  @include span-columns(8);
-  @include omega();
+  @include media($mobile) {
+    @include span-columns(6);
+  }
 }

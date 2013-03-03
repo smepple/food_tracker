@@ -1,6 +1,30 @@
 header {
   overflow: hidden;
   background-color: #EEE;
-  padding: .5em 1em;
-  margin-bottom: 1.5em;
+  padding: .5em 0;
+}
+
+.header-left {
+  @include span-columns(6);
+  @include pad(5px 4em);
+}
+
+.header-right {
+  @include span-columns(6);
+  @include pad(5px 4em);
+  @include omega;
+  text-align: right;
+}
+
+.logo {
+
+  a {
+    color: #333;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 22px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
