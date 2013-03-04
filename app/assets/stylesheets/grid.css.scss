@@ -1,4 +1,4 @@
-$mobile: new-breakpoint(max-width 800px 6);
+$mobile: new-breakpoint(min-width 320px max-width 760px 6);
 
 .outer-container {
   @include outer-container;
